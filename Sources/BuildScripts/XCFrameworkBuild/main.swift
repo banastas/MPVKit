@@ -396,6 +396,8 @@ private class BuildMPV: BaseBuild {
             "-Djpeg=disabled",
             "-Dvapoursynth=disabled",
             "-Drubberband=disabled",
+            // Repertory: keep Homebrew's libdvdnav (found via pkg-config) out of cross builds.
+            "-Ddvdnav=disabled",
         ]
         if BaseBuild.options.enableGPL {
             array.append("-Dgpl=true")
