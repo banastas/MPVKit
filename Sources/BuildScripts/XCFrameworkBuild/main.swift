@@ -716,6 +716,8 @@ private class BuildFFMPEG: BaseBuild {
         "--enable-decoder=snow", "--enable-decoder=svq3",
         "--enable-decoder=tscc", "--enable-decoder=txd",
         "--enable-decoder=wmv1", "--enable-decoder=wmv2", "--enable-decoder=wmv3",
+        // Repertory: old WMV/AVI files use MS-MPEG4 v1-v3 video.
+        "--enable-decoder=msmpeg4*",
         "--enable-decoder=vc1", "--enable-decoder=vp6", "--enable-decoder=vp6a", "--enable-decoder=vp6f",
         "--enable-decoder=vp7", "--enable-decoder=vp8", "--enable-decoder=vp9",
         // 音频
