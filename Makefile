@@ -1,6 +1,6 @@
 # make only accept argument format: xxxx=xxxx, other format will treat as a target.
 # add [enable-split-platform enable-debug enable-gpl] to .PHONY can ignore target not exist error.
-.PHONY: help build gpl clean enable-split-platform enable-debug enable-gpl
+.PHONY: help build gpl repertory clean enable-split-platform enable-debug enable-gpl
 
 help:
 	@echo "Usage: make [target]"
@@ -18,6 +18,10 @@ build:
 
 gpl:
 	swift run --build-path ./.build --package-path Sources/BuildScripts build enable-gpl $(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
+
+# Repertory: GPL FFmpeg/mpv for every platform the Repertory apps ship on.
+repertory:
+	swift run --build-path ./.build --package-path Sources/BuildScripts build enable-gpl platform=ios,tvos,macos $(filter-out $@,$(MAKECMDGOALS)) $(MAKEFLAGS)
 
 clean:
 	@find . -name '.build' -type d -exec rm -rf {} +
